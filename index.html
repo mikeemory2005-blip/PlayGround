@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+<meta name="theme-color" content="#070603" />
+<title>THE BACKROOMS — Found Footage</title>
+<link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+<div id="app">
+  <canvas id="scene" aria-label="The Backrooms game view"></canvas>
+
+  <div id="vignette" aria-hidden="true"></div>
+  <div id="scanlines" aria-hidden="true"></div>
+  <div id="grain" aria-hidden="true"></div>
+
+  <div id="hud" class="hud" aria-hidden="true">
+    <div class="hud-top">
+      <div class="rec-block">
+        <span class="rec-dot"></span>
+        <span class="rec-text">REC</span>
+        <span class="sp-text">SP</span>
+      </div>
+      <div class="date-block">
+        <div id="osd-date">AUG 14 1996</div>
+        <div id="osd-clock">22:47:12</div>
+      </div>
+    </div>
+
+    <div class="hud-mid">
+      <div class="focus-reticle" id="focus-reticle">
+        <i class="c tl"></i><i class="c tr"></i><i class="c bl"></i><i class="c br"></i>
+        <span id="focus-label">FOCUS</span>
+      </div>
+      <div id="toast" class="toast"></div>
+    </div>
+
+    <div class="hud-bottom">
+      <div class="battery-block">
+        <span class="hud-label">BATT</span>
+        <span class="battery"><i id="batt-fill"></i></span>
+        <span id="batt-pct" class="hud-num">100</span>
+      </div>
+      <div class="timecode-block">
+        <span id="timecode">00:00:00:00</span>
+      </div>
+      <div class="zoom-block">
+        <span class="hud-label">ZOOM</span>
+        <span class="zoom-track"><i id="zoom-fill"></i></span>
+        <span id="zoom-val" class="hud-num">1.0×</span>
+        <span id="zoom-mode" class="zoom-mode">AUTO</span>
+      </div>
+    </div>
+
+    <div class="cam-label">SONY CCD-TRV88 · TAPE 01</div>
+    <div class="edge-code" id="edge-code">0x0000</div>
+  </div>
+
+  <div id="touch-ui" aria-hidden="true">
+    <div id="stick-zone" class="stick-zone">
+      <div id="stick-base" class="stick-base"><div id="stick-knob" class="stick-knob"></div></div>
+      <span class="stick-hint">MOVE</span>
+    </div>
+    <div class="touch-actions">
+      <button id="btn-zoom" class="touch-btn" type="button" aria-label="Hold to zoom">ZOOM</button>
+      <button id="btn-sprint" class="touch-btn" type="button" aria-label="Hold to run">RUN</button>
+      <button id="btn-pause" class="touch-btn small" type="button" aria-label="Pause">II</button>
+    </div>
+    <div class="look-hint">DRAG RIGHT SIDE TO LOOK</div>
+  </div>
+
+  <div id="intro" class="overlay intro">
+    <div class="intro-inner">
+      <div class="tape-head">
+        <span class="rec-dot"></span> PLAY&nbsp;&nbsp;▶&nbsp;&nbsp;TAPE 01
+        <span class="tape-date">08·14·1996</span>
+      </div>
+      <h1 class="title">THE<br><span>BACKROOMS</span></h1>
+      <div class="title-sub">LEVEL 0 &nbsp;//&nbsp; FOUND FOOTAGE &nbsp;//&nbsp; 22:47</div>
+      <p class="blurb">
+        You noclipped out of reality. The carpet is damp. The lights never stop buzzing.
+        Something else is walking the halls with you.
+      </p>
+      <button id="start-btn" class="start-btn" type="button">START</button>
+      <div class="intro-foot">
+        <div class="controls-grid">
+          <span><b>W A S D</b> walk</span>
+          <span><b>MOUSE</b> look</span>
+          <span><b>SHIFT</b> run</span>
+          <span><b>RMB / Z</b> zoom</span>
+          <span><b>WHEEL</b> zoom level</span>
+          <span><b>M</b> mute</span>
+        </div>
+        <div class="headphones">◉ HEADPHONES RECOMMENDED — DO NOT LOOK AWAY</div>
+      </div>
+    </div>
+    <div class="intro-noise" aria-hidden="true"></div>
+  </div>
+
+  <div id="pause" class="overlay pause hidden">
+    <div class="pause-inner">
+      <div class="tape-head"><span class="rec-dot"></span> PAUSED</div>
+      <h2>PAUSED</h2>
+      <p>The tape is still running.</p>
+      <button id="resume-btn" class="start-btn" type="button">RESUME</button>
+      <div class="small-note">Press ESC or click resume to keep walking.</div>
+    </div>
+  </div>
+
+  <div id="death" class="overlay death hidden">
+    <div class="death-inner">
+      <div class="tape-head"><span class="rec-dot"></span> END OF TAPE</div>
+      <h2>SIGNAL<br>LOST</h2>
+      <p class="death-line">IT FOUND YOU.</p>
+      <div id="death-stats" class="death-stats"></div>
+      <button id="rewind-btn" class="start-btn" type="button">REWIND TAPE</button>
+      <div class="small-note">The rooms rearrange themselves when you are not looking.</div>
+    </div>
+  </div>
+
+  <div id="boot-error" class="boot-error hidden">
+    <h2>NO SIGNAL</h2>
+    <p id="boot-error-text">WebGL could not start.</p>
+  </div>
+</div>
+
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
