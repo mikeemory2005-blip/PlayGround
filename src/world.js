@@ -167,10 +167,11 @@ function applyWorldUV(geo, tile, ox, oz) {
 /* ------------------------------------------------------------------ */
 
 export class World {
-  constructor(scene, textures, { mobile = false } = {}) {
+  constructor(scene, textures, { mobile = false, seed = 0x51ed270b } = {}) {
     this.scene = scene;
     this.textures = textures;
     this.mobile = mobile;
+    this.seed = seed >>> 0;
     this.chunks = new Map();
     this.time = 0;
     this.playerX = 0;
@@ -380,7 +381,7 @@ export class World {
         const f = candidates[i].f;
         light.position.set(f.x, WALL_H - 0.24, f.z);
         const level = flickerAt(f.seed, time);
-        light.intensity = 13.5 * level;
+        light.intensity = 24 * level;
         light.distance = 15;
       } else {
         light.intensity = 0;
@@ -393,7 +394,7 @@ export class World {
   /* ---------------------------------------------------------------- */
 
   buildChunk(cx, cz) {
-    const rng = mulberry32(hash2(cx, cz, 0x51ed270b));
+    const rng = mulberry32(hash2(cx, cz, this.seed));
     const originX = cx * CHUNK;
     const originZ = cz * CHUNK;
     const isStart = cx === 0 && cz === 0;
@@ -514,6 +515,15 @@ export class World {
       addColumn(CHUNK * 0.5 + 5.4, CHUNK * 0.5 - 5.4, tint());
       addColumn(CHUNK * 0.5 - 5.4, CHUNK * 0.5 + 5.4, tint());
       addColumn(CHUNK * 0.5 + 5.4, CHUNK * 0.5 + 5.4, tint());
+
+      // A smaller starting chamber with four doorways so the player has
+      // readable walls close by instead of a vast black hall.
+      const c = CHUNK * 0.5;
+      const r = 7.2;
+      addWallWithDoor('x', c - r, c - r, c + r, c, 2.6, tint(), 0.55);
+      addWallWithDoor('x', c + r, c - r, c + r, c, 2.6, tint(), 0.35);
+      addWallWithDoor('z', c - r, c - r, c + r, c, 2.6, tint(), 0.35);
+      addWallWithDoor('z', c + r, c - r, c + r, c, 2.6, tint(), 0.55);
     } else {
       const splitRoom = (x0, z0, x1, z1, depth) => {
         const w = x1 - x0;
@@ -852,6 +862,11 @@ export class World {
       });
     }
     this.chunks.clear();
+  }
+
+  reseed(seed) {
+    this.seed = seed >>> 0;
+    this.clear();
   }
 
   dispose() {

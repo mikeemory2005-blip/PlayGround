@@ -1,5 +1,23 @@
 # PlayGround
 
+## THE BACKROOMS — Found Footage
+
+An endless, procedurally generated Level 0 running in the browser on Three.js. The whole thing is rendered through a 90s camcorder: mono-yellow wallpaper, damp carpet, buzzing fluorescents, tape grain, chromatic aberration and the occasional tracking tear. Something else is down here with you.
+
+**Play:** open `index.html` through any static web server (for example `python3 -m http.server`), then click **BEGIN RECORDING**. Headphones recommended.
+
+### Controls
+
+| Action | Desktop | Touch |
+| --- | --- | --- |
+| Look | Mouse (click to lock) or drag | Drag anywhere on the view |
+| Move | `W A S D` / arrow keys | Left joystick |
+| Run | `Shift` (uses stamina) | `RUN` button |
+| Zoom | Hold `Z` or right mouse button, mouse wheel changes level | `ZOOM` toggle (1.8×) |
+| Pause | `Esc` / `P` | Pause button |
+
+You have a finite camcorder battery. Find the exit signs, keep moving, and don't let it get close. When the tape ends, it rewinds — and the rooms are never the same twice.
+
 <!-- omgithub:readme:start -->
 ## 🚀 Build, play, and remix with OMGithub
 

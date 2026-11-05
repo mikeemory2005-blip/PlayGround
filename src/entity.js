@@ -60,6 +60,7 @@ export class Entity {
       metalness: 0.08,
     });
     const eyeMat = new THREE.MeshBasicMaterial({ color: 0x4a4737, toneMapped: false });
+    this.skinMat = skin;
 
     this.body = new THREE.Group();
     this.group.add(this.body);
@@ -98,8 +99,8 @@ export class Entity {
     this.head.add(eyeL, eyeR);
 
     // long, thin arms
-    this.armL = this.makeArm(-0.3, 1.0, 0.7);
-    this.armR = this.makeArm(0.3, 1.0, 0.7);
+    this.armL = this.makeArm(-0.3, 1.0, 0.24);
+    this.armR = this.makeArm(0.3, 1.0, 0.24);
     this.hips.add(this.armL, this.armR);
 
     // legs
@@ -121,7 +122,7 @@ export class Entity {
     pivot.position.set(x, y, 0);
     pivot.rotation.z = shoulderTilt;
 
-    const upper = new THREE.Mesh(new THREE.CapsuleGeometry(0.072, 0.46, 4, 7), this.body.children[0]?.material || undefined);
+    const upper = new THREE.Mesh(new THREE.CapsuleGeometry(0.072, 0.46, 4, 7), this.skinMat);
     upper.position.y = -0.33;
     pivot.add(upper);
 
@@ -146,7 +147,7 @@ export class Entity {
     const pivot = new THREE.Group();
     pivot.position.set(x, 0.0, 0);
 
-    const thigh = new THREE.Mesh(new THREE.CapsuleGeometry(0.088, 0.46, 4, 7), this.armL?.children[0]?.material);
+    const thigh = new THREE.Mesh(new THREE.CapsuleGeometry(0.088, 0.46, 4, 7), this.skinMat);
     thigh.position.y = -0.34;
     pivot.add(thigh);
 
@@ -506,9 +507,9 @@ export class Entity {
     const k = 1 - Math.exp(-dt * 9.0);
     this.position.x += (targetX - this.position.x) * k;
     this.position.z += (targetZ - this.position.z) * k;
-    this.group.position.set(this.position.x, -0.42, this.position.z);
+    this.group.position.set(this.position.x, -0.5, this.position.z);
     this.group.rotation.y = yawToFace(player.x - this.position.x, player.z - this.position.z);
-    this.group.scale.setScalar(1 + Math.min(0.35, this.attackTime * 0.6));
+    this.group.scale.setScalar(1 + Math.min(0.16, this.attackTime * 0.35));
 
     const flail = Math.sin(this.attackTime * 35) * 0.5;
     this.armL.rotation.x = -1.5 + flail;
