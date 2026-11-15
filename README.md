@@ -16,3 +16,7 @@
 - 👤 [Explore the creator's projects](https://go.ondev.store/mikeemory2005-blip).
 - 🌍 [Create with OMGithub](https://go.ondev.store/).
 <!-- omgithub:readme:end -->
+
+## Narration
+
+Storyverse uses the pretrained [Kokoro 82M](https://huggingface.co/onnx-community/Kokoro-82M-v1.0-ONNX) text-to-speech model through `kokoro-js` in the browser (`q8` weights, WASM runtime). On first playback, the browser downloads the library and model assets from public CDNs; speech generation then runs locally. No story text is sent to a Storyverse backend. This is inference with an existing pretrained model—not model training. An internet connection is required for the initial download.
