@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#09070f" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2309070f'/%3E%3Ctext x='17' y='47' font-size='46' font-family='serif' fill='%23c9a7ff'%3ES%3C/text%3E%3C/svg%3E" />
+  <title>Storyverse AI — Don't just read it. Experience it.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#home" aria-label="Storyverse home"><span class="brand-mark">S<span>✦</span></span><span class="brand-name">storyverse<span>AI</span></span></a>
+      <div class="side-label">YOUR STUDIO</div>
+      <nav class="main-nav" aria-label="Main navigation">
+        <button class="nav-item active" data-page="home"><span class="nav-icon">⌂</span> Discover</button>
+        <button class="nav-item" data-page="library"><span class="nav-icon">▤</span> My library <span class="nav-count" id="libraryCount">03</span></button>
+        <button class="nav-item" data-page="create"><span class="nav-icon">✳</span> Create a story</button>
+      </nav>
+      <div class="side-label genre-label">EXPLORE GENRES</div>
+      <nav class="genre-nav" aria-label="Genres">
+        <button data-genre="Fantasy"><i class="genre-dot violet"></i> Fantasy</button>
+        <button data-genre="Mystery"><i class="genre-dot blue"></i> Mystery</button>
+        <button data-genre="Romance"><i class="genre-dot pink"></i> Romance</button>
+        <button data-genre="Thriller"><i class="genre-dot orange"></i> Thriller</button>
+        <button data-genre="Science fiction"><i class="genre-dot cyan"></i> Sci-fi</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="plan-card"><div class="plan-top"><span class="sparkle">✦</span><span>YOUR CREATOR PLAN</span></div><strong>Stories deserve<br>the full experience.</strong><div class="plan-progress"><span></span></div><div class="plan-foot"><span>2 of 3 free stories used</span><button id="upgradeBtn">Upgrade ↗</button></div></div>
+        <button class="profile"><span class="avatar">A</span><span><b>Alex Morgan</b><small>Free plan</small></span><span class="profile-more">···</span></button>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar"><div class="mobile-brand"><span class="brand-mark">S<span>✦</span></span><b>storyverse<span>AI</span></b></div><div class="breadcrumb" id="breadcrumb">Your world of stories <span>／</span> Discover</div><div class="top-actions"><button class="icon-button" id="searchBtn" aria-label="Search">⌕</button><button class="icon-button notification" aria-label="Notifications">♧<i></i></button><button class="top-avatar">A</button></div></header>
+      <section class="page active" id="homePage">
+        <div class="welcome-row"><div><div class="eyebrow"><span class="live-dot"></span> YOUR NEXT ADVENTURE STARTS HERE</div><h1>Stories, <em>reimagined.</em></h1><p class="welcome-sub">Turn the words around you into worlds you can step into.</p></div><button class="text-link" id="howItWorks">How it works <span>↗</span></button></div>
+        <section class="hero-card">
+          <div class="hero-image"></div><div class="hero-shade"></div><div class="hero-content"><div class="hero-tag"><span>✦</span> THE STORYVERSE EXPERIENCE</div><h2>Every page has<br>a <em>universe</em> inside.</h2><p>Scan a page, a recipe, a letter. We'll help you hear the story hiding in it.</p><button class="scan-button" id="scanBtn"><span class="scan-icon">⌗</span><span><b>SCAN ANYTHING</b><small>Turn a page into an experience</small></span><span class="button-arrow">↗</span></button><div class="hero-footnote"><span class="shield">◈</span> Your words stay yours. Only scan what you're allowed to use.</div></div><div class="hero-index"><span>01</span><i></i><span>03</span></div></section>
+        <div class="quick-actions"><button class="quick-card" id="uploadBtn"><span class="quick-icon upload-icon">↑</span><span><b>Upload a page</b><small>Photo, scan or document</small></span><span class="quick-arrow">↗</span></button><button class="quick-card" id="writeBtn"><span class="quick-icon write-icon">✎</span><span><b>Write your own</b><small>Bring your original story to life</small></span><span class="quick-arrow">↗</span></button><button class="quick-card" id="cameraBtn"><span class="quick-icon camera-icon">▣</span><span><b>Use your camera</b><small>Capture a page in the moment</small></span><span class="quick-arrow">↗</span></button></div>
+        <section class="section-block"><div class="section-heading"><div><div class="eyebrow muted-eyebrow">PICK UP WHERE YOU LEFT OFF</div><h2>Recently created <span class="heading-count">03</span></h2></div><button class="view-all" data-goto="library">View your library <span>→</span></button></div><div class="story-grid" id="recentGrid"></div></section>
+        <section class="section-block genre-section"><div class="section-heading"><div><div class="eyebrow muted-eyebrow">FIND YOUR FEELING</div><h2>Explore a universe</h2></div><button class="view-all" id="allGenres">All genres <span>→</span></button></div><div class="genre-cards"><button class="genre-card genre-fantasy" data-genre="Fantasy"><span class="genre-num">01 / 08</span><span class="genre-title">Fantasy</span><span class="genre-caption">Magic is closer than you think</span><i>↗</i></button><button class="genre-card genre-mystery" data-genre="Mystery"><span class="genre-num">02 / 08</span><span class="genre-title">Mystery</span><span class="genre-caption">Follow the impossible clues</span><i>↗</i></button><button class="genre-card genre-scifi" data-genre="Science fiction"><span class="genre-num">03 / 08</span><span class="genre-title">Sci-fi</span><span class="genre-caption">Beyond the known universe</span><i>↗</i></button><button class="genre-card genre-horror" data-genre="Horror"><span class="genre-num">04 / 08</span><span class="genre-title">Horror</span><span class="genre-caption">A beautiful kind of fear</span><i>↗</i></button></div></section>
+        <footer class="footer-note">© 2025 STORYVERSE AI <span>•</span> YOUR IMAGINATION, AMPLIFIED.</footer>
+      </section>
+
+      <section class="page" id="libraryPage"><div class="page-heading"><div class="eyebrow muted-eyebrow">ALL YOUR WORLDS IN ONE PLACE</div><h1>Your <em>library.</em></h1><p>Every experience you've made, ready to return to.</p></div><div class="library-tools"><div class="search-field"><span>⌕</span><input id="librarySearch" placeholder="Search your stories..." /></div><select id="libraryFilter"><option value="all">All genres</option><option>Fantasy</option><option>Mystery</option><option>Romance</option><option>Thriller</option><option>Science fiction</option><option>Horror</option><option>Original</option></select><button class="primary-small" id="libraryCreate">＋ Create new</button></div><div class="library-grid" id="libraryGrid"></div><div class="empty-state hidden" id="emptyLibrary"><span>✧</span><h3>Your next favorite is waiting.</h3><p>Scan a page or write an original story to get started.</p><button class="primary-small" data-goto="create">Create a story</button></div></section>
+
+      <section class="page" id="createPage"><div class="page-heading"><div class="eyebrow muted-eyebrow">YOUR STORY, YOUR UNIVERSE</div><h1>Make it <em>cinematic.</em></h1><p>Start with words. Leave with an experience.</p></div><div class="creator-layout"><div class="creator-main"><div class="creator-tabs"><button class="creator-tab active" data-creator="write">✎ &nbsp;Write a story</button><button class="creator-tab" data-creator="scan">⌗ &nbsp;Scan text</button></div><label class="field-label" for="storyTitle">GIVE YOUR STORY A NAME</label><input id="storyTitle" class="title-input" placeholder="The night the stars came down..." maxlength="70"/><label class="field-label story-label" for="storyText">YOUR WORDS <span id="wordCount">0 words</span></label><textarea id="storyText" class="story-input" placeholder="Every great story begins somewhere. Write a scene, paste your own words, or bring a story you're authorized to use..."></textarea><div class="text-hint"><span>✧</span> Original writing, public-domain works, and content you're authorized to use.</div><div class="creator-options"><div><label class="field-label" for="genreSelect">SET THE MOOD</label><select id="genreSelect"><option>Fantasy</option><option>Mystery</option><option>Science fiction</option><option>Thriller</option><option>Horror</option><option>Romance</option><option>Comedy</option><option>Adventure</option></select></div><div><label class="field-label" for="voiceSelect">NARRATOR STYLE</label><select id="voiceSelect"><option value="natural">Natural storyteller</option><option value="dramatic">Dramatic & cinematic</option><option value="gentle">Warm & gentle</option><option value="mysterious">Mysterious</option></select></div></div><button class="produce-button" id="produceBtn"><span>✦</span> CREATE MY EXPERIENCE <i>↗</i></button></div><aside class="creator-aside"><div class="aside-art"><div class="art-orbit orbit-one"></div><div class="art-orbit orbit-two"></div><div class="art-core">✧</div><div class="art-star star-one">✦</div><div class="art-star star-two">✧</div></div><div class="aside-copy"><div class="eyebrow">A LITTLE STORY MAGIC</div><h3>Words become<br><em>worlds.</em></h3><p>Your words stay the focus. Your browser's built-in voice brings them to life—no voice cloning, no hidden uploads.</p><div class="feature-list"><span><i>✓</i> Expressive narration</span><span><i>✓</i> A soundtrack you can hear</span><span><i>✓</i> Your story, saved on this device</span></div></div></aside></div></section>
+
+      <section class="page" id="detailPage"><button class="back-link" id="detailBack">← &nbsp; Back to your stories</button><div id="detailContent"></div></section>
+    </main>
+  </div>
+  <input type="file" id="fileInput" accept="image/*,.pdf,.txt,.md" hidden />
+  <div class="toast" id="toast" role="status"></div>
+  <div class="modal-backdrop hidden" id="modalBackdrop"><div class="modal" id="modal"></div></div>
+  <script src="app.js"></script>
+</body>
+</html>
